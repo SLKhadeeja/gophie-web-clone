@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 import {DownloadIcon} from "./icons";
+import {connect} from "react-redux"
 
-export default class Movie extends Component {
+class Movie extends Component {
     render(){
         const{CoverPhotoLink, DownloadLink, size, Title} = this.props.data;
         return(
@@ -20,3 +21,7 @@ export default class Movie extends Component {
         );
     }
 }
+
+export default connect(
+    null
+)(Movie);

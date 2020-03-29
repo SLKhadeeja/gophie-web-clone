@@ -1,5 +1,6 @@
 import React from "react";
 import Movie from "./Movie"
+import {connect} from "react-redux"
 
 function MoviesPack({movies}){
     return movies.map(movie => {
@@ -7,4 +8,4 @@ function MoviesPack({movies}){
     });
 }
 
-export default MoviesPack;
+export default connect(null)(MoviesPack);
