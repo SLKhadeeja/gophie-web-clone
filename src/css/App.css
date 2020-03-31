@@ -1,39 +1,108 @@
 .App {
-  text-align: center;
+  width: 100%;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+body {
+  background-color: #1e2126; 
+  padding: 0px;
+  margin: 0px;
 }
 
 .App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background-color: #282c34;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 70px;
+  color: white;
+  position: fixed;
+  top: 0px;
+  box-shadow: #42ac04 0px -2px 8px 1px;
+
+}
+
+.name, .input, .search-button{
+  width: 20%;
+  height: 100%;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  display: inline-flex;
+  text-align: center;
+} 
+
+.input{
+  width: 65%;
 }
 
-.App-link {
-  color: rgb(112, 76, 182);
+.name{
+  background: #42ac04;
+  font-weight: bolder;
+  font-size: 18px;
+  display: inline-flex;
 }
 
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px)
-  }
-  100% {
-    transform: translateY(0px)
-  }
+P.go:first-letter {
+  font-size: 55px;
+  font-family: 'Courier New', Courier, monospace;
+
+}
+
+.search-button{
+  width: 20%;
+  background-color: #42ac04;
+  border-radius: 0px 5px 5px 0px;
+}
+
+.search{
+  width: 100%;
+  height: 90%;
+  color: #42ac04;
+  border-color: #42ac04;
+  border-top: 2px solid #42ac04;
+  border-bottom: 2px solid #42ac04;
+  font-size: 20px;
+  background: transparent;
+}
+
+.button-main{
+  width: 100%;
+  height: 100;
+  background-color: #43ae04;
+  border: none;
+  outline: none;
+}
+
+.button-main:hover{
+  background-color: #42ac04;
+}
+
+.search::placeholder{
+  color: #42ac04;
+  text-align: center;
+  font-size: 18px;
+  opacity: 0.6;
+}
+
+.error{
+  display: block;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 200px 10px;
+  color: #add8b6;
+  font-size: 15px;
+} 
+
+.retry-btn{
+  background-color: #42ac04;
+  color: #282c34;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  padding: 20px;
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  border-radius: 18px;
 }

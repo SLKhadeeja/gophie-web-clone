@@ -1,14 +1,22 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
 import {SearchIcon} from "./icons.js";
-import "./css/App.css";
+import "../css/App.css";
 import { search_movie, recommend} from "../redux/actions.js";
 
-class Header extends Component(){
+function mapStateToProps(state) {
+    return { movies: state.movies, listIndex: state.listIndex, error: state.error }
+  }
+  
+class Header extends Component{
+    constructor(props){
+        super(props);
+        this.searchInput = React.createRef();
+    }
 
     handleSearchChange = (e) =>{
         let searchItem = e.target.value.toLowerCase();
-        let matches = this.state.movies.filter(movie => movie.Title.toLowerCase().includes(searchItem));
+        let matches = this.movies.filter(movie => movie.Title.toLowerCase().includes(searchItem));
 
         if (searchItem.length === 0){
             this.props.recommend(false);
@@ -55,5 +63,5 @@ class Header extends Component(){
     }
 
 export default connect (
-    null, {recommend, search_movie}
+   mapStateToProps, {recommend, search_movie}
 )(Header);

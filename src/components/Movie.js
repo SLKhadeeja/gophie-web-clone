@@ -22,6 +22,4 @@ class Movie extends Component {
     }
 }
 
-export default connect(
-    null
-)(Movie);
+export default connect()(Movie);

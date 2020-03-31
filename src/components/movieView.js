@@ -1,9 +1,11 @@
-import React, {Component} from "react"
-import {RetryIcon} from "./icons"
-import MovieList from "./MovieList"
-import Loading from "./loader.js"
+import React, {Component} from "react";
+import {RetryIcon} from "./icons";
+import MovieList from "./MovieList";
+import Loading from "./loader.js";
+import {connect} from "react-redux";
+import { search_movie, recommend} from "../redux/actions.js"
 
-export default class MovieView extends Component{
+class MovieView extends Component{
 
     retry = () => {
         let searchItem = this.searchInput.current.value
@@ -17,11 +19,11 @@ export default class MovieView extends Component{
     render(){
         return(
             <div className="movies">
-                <MovieList movies={this.state.movies} />
+                <MovieList movies={this.movies} />
 
-                {this.state.isLoading && !this.state.error && (<Loading />)}
+                {this.isLoading && !this.error && (<Loading />)}
 
-                {this.state.error && (
+                {this.error && (
                     <div className="error">
                         <p className="error-message">Sorry man................Deven broke something</p>
                         <button className="retry-btn" onClick={this.retry.bind(this)}>
@@ -35,3 +37,11 @@ export default class MovieView extends Component{
         );
     }
 }
+
+function mapStateToProps(state) {
+    return { movies: state.movies, isLoading: state.isLoading, error: state.error }
+  }
+
+export default connect (
+    mapStateToProps, {recommend, search_movie}
+)(MovieView);

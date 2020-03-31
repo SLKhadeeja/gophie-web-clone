@@ -15,7 +15,7 @@ export default function getMovies(state = initialState, action){
     switch(action.type){
         case SEARCH_MOVIE:
             const query = action.value;
-            return (dispatch) => {
+            return () => {
                 axios
                 .get(state.api + "?search=" + query.replace(" ", "+"))
                 .then(res => {
@@ -28,7 +28,7 @@ export default function getMovies(state = initialState, action){
             }
         case RECOMMEND:
             const append = action.value
-            return (dispatch) => {
+            return () => {
                 axios
                 .get(`${state.api}?list=${state.listIndex}`)
                 .then(res => {

@@ -1,6 +1,6 @@
 import React from "react";
-import {Header} from "./componenets/header.js";
-import {MovieView} from "./componenets/movieView.js";
+import Header from "./components/header.js";
+import MovieView from "./components/movieView.js";
 
 export default function App(){
   return(
