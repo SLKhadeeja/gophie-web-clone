@@ -7,7 +7,7 @@ import { search_movie, recommend} from "../redux/actions.js";
 function mapStateToProps(state) {
     return { movies: state.movies, listIndex: state.listIndex, error: state.error }
   }
-  
+
 class Header extends Component{
     constructor(props){
         super(props);
@@ -16,25 +16,30 @@ class Header extends Component{
 
     handleSearchChange = (e) =>{
         let searchItem = e.target.value.toLowerCase();
-        let matches = this.movies.filter(movie => movie.Title.toLowerCase().includes(searchItem));
+        let matches = this.props.movies.filter(movie => movie.Title.toLowerCase().includes(searchItem));
 
         if (searchItem.length === 0){
             this.props.recommend(false);
-            this.setState({listIndex: 1});
+            // this.setState({listIndex: 1});
+            this.listIndex = 1;
             return;
         }
 
         if (matches.length >=1){
-            this.setState({movies: matches});
+            // this.setState({movies: matches});
+            this.movies = matches;
             return;
         }
+        // this.props.search_movie(searchItem)
     }
 
     search = () => {
-        this.setState({
-            movies: [],
-            error: false
-        })
+        // this.setState({
+        //     movies: [],
+        //     error: false
+        // })
+        this.movies = [];
+        this.error = false;
         let searchItem = this.searchInput.current.value;
         this.props.search_movie(searchItem)
     }

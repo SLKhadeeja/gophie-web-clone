@@ -1,17 +1,59 @@
-import { RECOMMEND, SEARCH_MOVIE/*,DESCRIBE, DOWNLOAD*/} from "./actionTypes.js";
+import { RECOMMEND, SEARCH_MOVIE,/*,DESCRIBE, DOWNLOAD*/
+RECOMMEND_COMPLETED,
+ERROR,
+SEARCH_MOVIE_COMPLETED} from "./actionTypes.js";
 
-export const recommend = append => {
-    return{
-        type: RECOMMEND,
-        value: append
-    };
+import axios from "axios";
+
+const api =  "https://gophie.herokuapp.com/";
+export const recommend = listIndex => {
+    return (dispatch) => {
+        dispatch({
+            type: RECOMMEND
+        })
+        axios.get(api + "?list=" + {
+            params:{
+                listIndex: listIndex
+            }
+        })
+        .then(res => {
+            dispatch({
+                type: RECOMMEND_COMPLETED,
+                payload: res.data
+            })
+        })
+        .catch((err) => {
+            dispatch({
+                type: ERROR,
+                payload: err
+            })
+        })
+    }
 };
 
-export const search_movie = (search_url) => {
-    return{
-        type: SEARCH_MOVIE,
-        value: search_url
-    };
+export const search_movie = (query) => {
+    return (dispatch) => {
+        dispatch({
+            type: SEARCH_MOVIE
+        })
+        axios.get(api + "?search=" + {
+            params:{
+                query: query
+            }
+        })
+        .then(res => {
+            dispatch({
+                type: SEARCH_MOVIE_COMPLETED,
+                payload: res.data
+            })
+        })
+        .catch((err) => {
+            dispatch({
+                type: ERROR,
+                payload: err
+            })
+        })
+    }
 };
 
 // export const describe = describe_object =>{

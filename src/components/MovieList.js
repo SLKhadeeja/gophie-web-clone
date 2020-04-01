@@ -1,17 +1,11 @@
 import React from "react";
-import Movie from "./Movie"
-import {connect} from "react-redux"
+import Movie from "./Movie.js"
 
-const mapStateToProps = (state) => {
-    return { movies: state.movies }
-  }
-  
 
 function MoviesPack({movies}){
     return movies.map(movie => {
-        return <Movie /*key={movie.Index} data={movie}*/ />;
+        return <Movie key={movie.Index} data={movie} />;
     });
 }
 
-// export default MoviesPack;
-export default connect(mapStateToProps)(MoviesPack);
+export default MoviesPack;

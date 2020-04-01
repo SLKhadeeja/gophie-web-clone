@@ -1,53 +1,61 @@
-import {RECOMMEND, SEARCH_MOVIE} from "./actionTypes.js";
-import axios from "axios"
+import {RECOMMEND, SEARCH_MOVIE, SEARCH_MOVIE_COMPLETED, RECOMMEND_COMPLETED, ERROR} from "./actionTypes.js";
 
 const initialState = {
-    api: "https://gophie.herokuapp.com/",
     movies: [],
     isLoading: true,
     more: true,
     listIndex: 1,
-    error: false
+    error: false,
+    message: ""
 };
 
 
 export default function getMovies(state = initialState, action){
     switch(action.type){
         case SEARCH_MOVIE:
-            const query = action.value;
-            return () => {
-                axios
-                .get(state.api + "?search=" + query.replace(" ", "+"))
-                .then(res => {
-                    state.movies = res.data})
-                .catch(e => {
-                    alert(e);
-                    state.error = true;
-                })
+            {
+                return{
+                    ...state,
+                    isloading: true
+                }
+            }
 
+        case SEARCH_MOVIE_COMPLETED:
+            {
+                return{
+                    ...state,
+                    isloading: false,
+                    movies: action.payload
+                }
             }
+        
         case RECOMMEND:
-            const append = action.value
-            return () => {
-                axios
-                .get(`${state.api}?list=${state.listIndex}`)
-                .then(res => {
-                    const movies = res.data;
-                    let newIndex = state.index;
-                    let newmovies = movies.map((element) => {
-                        element.Index = element.Index + (newIndex - 1) * 14;
-                        return element;
-                      });
-                    newIndex++
-                    state.isLoading = false;
-                    state.listIndex = newIndex;
-                    state.movies = append ? [...this.state.movies, ...newmovies] : newmovies
-                })
-                .catch(e => {
-                    alert(e);
-                    state.error = true;
-                })
+            {
+                return{
+                    ...state,
+                    isLoading: true
+                }
             }
+
+        case RECOMMEND_COMPLETED:
+            {
+                return{
+                    ...state,
+                    isloading: false,
+                    movies: action.payload
+                }
+            }
+
+        case ERROR:
+            {
+                return{
+                    ...state,
+                    isloading: false,
+                    error: true,
+                    message: action.payload
+                }
+            }
+
         default:
             return state
     }
