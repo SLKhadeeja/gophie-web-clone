@@ -1,4 +1,4 @@
-import {RECOMMEND, SEARCH_MOVIE, SEARCH_MOVIE_COMPLETED, RECOMMEND_COMPLETED, ERROR} from "./actionTypes.js";
+import {RECOMMEND, SEARCH_MOVIE, SEARCH_MOVIE_COMPLETED, RECOMMEND_COMPLETED, ERROR, SELECT_ENGINE} from "./actionTypes.js";
 
 const initialState = {
     movies: [],
@@ -6,7 +6,9 @@ const initialState = {
     more: true,
     listIndex: 1,
     error: false,
-    message: ""
+    query: "",
+    engine: "netnaija",
+    page: 1
 };
 
 
@@ -16,7 +18,8 @@ export default function getMovies(state = initialState, action){
             {
                 return{
                     ...state,
-                    isloading: true
+                    isloading: true,
+                    query: action.query
                 }
             }
 
@@ -53,6 +56,14 @@ export default function getMovies(state = initialState, action){
                     isloading: false,
                     error: true,
                     message: action.payload
+                }
+            }
+
+        case SELECT_ENGINE:
+            {
+                return{
+                    ...state, 
+                    engine: action.payload
                 }
             }
 

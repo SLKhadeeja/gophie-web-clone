@@ -2,28 +2,26 @@ import { RECOMMEND,
         SEARCH_MOVIE,/*,DESCRIBE, DOWNLOAD*/
         RECOMMEND_COMPLETED,
         ERROR,
-        SEARCH_MOVIE_COMPLETED
+        SEARCH_MOVIE_COMPLETED,
+        SELECT_ENGINE
     } from "./actionTypes.js";
 
 import axios from "axios";
 
 const api =  "https://gophie.herokuapp.com/";
 
-export const recommend = listIndex => {
+export const recommend = (engine, page)  => {
     return (dispatch) => {
         dispatch({
             type: RECOMMEND
         })
-        axios.get(api + "?list=" + {
-            params:{
-                listIndex: listIndex
-            }
-        })
+        axios.get(api + "list?page=" + String.valueOf(page) + "&engine=" + engine)
         .then(res => {
             dispatch({
                 type: RECOMMEND_COMPLETED,
                 payload: res.data
             })
+            page++;
         })
         .catch((err) => {
             dispatch({
@@ -39,11 +37,7 @@ export const search_movie = (query) => {
         dispatch({
             type: SEARCH_MOVIE
         })
-        axios.get(api + "?search=" + {
-            params:{
-                query: query
-            }
-        })
+        axios.get(api + "search?engine=netnaija&query=" + query.replace(' ', '+'))
         .then(res => {
             dispatch({
                 type: SEARCH_MOVIE_COMPLETED,
@@ -59,6 +53,12 @@ export const search_movie = (query) => {
     }
 };
 
+export const select_engine = option => {
+    return{
+        type: SELECT_ENGINE,
+        payload: option
+    };
+}
 // export const describe = describe_object =>{
 //     return{
 //         type: DESCRIBE,

@@ -3,5 +3,6 @@ export const RECOMMEND_COMPLETED = "RECOMMEND COMPLRTED";
 export const SEARCH_MOVIE = "SEARCH_MOVIE";
 export const SEARCH_MOVIE_COMPLETED = "SEARCH_MOVIE_COMPLETED";
 export const ERROR = "ERROR";
+export const SELECT_ENGINE = "SELECT_ENGINE";
 // export const DOWNLOAD = "DOWNLOAD";
 // export const DESCRIBE = "DESCRIBE";

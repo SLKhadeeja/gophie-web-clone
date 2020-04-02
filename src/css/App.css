@@ -1,15 +1,19 @@
 .App {
   width: 100%;
   position: relative;
+  height: 100%;
 }
 
 body {
   background-color: #1e2126; 
-  padding: 0px;
-  margin: 0px;
+  /* padding: 0px;
+  margin: 0px; */
+}
+.App-header{
+  display: block;
 }
 
-.App-header {
+.search-bar {
   background-color: #282c34;
   display: inline-flex;
   justify-content: space-between;
@@ -83,6 +87,23 @@ P.go:first-letter {
   font-size: 18px;
   opacity: 0.6;
 }
+
+.drop-down{
+  padding-top: 80px;
+  position: fixed;
+  height: 50px;
+  
+}
+
+.drop-down-main{
+  background-color: #43ae04;
+  height: 100%;
+  width: 130px;
+  border-radius: 10px;
+  font-size: 14px;
+
+}
+
 
 .error{
   display: block;

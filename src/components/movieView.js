@@ -7,13 +7,13 @@ import { search_movie, recommend} from "../redux/actions.js"
 
 class MovieView extends Component{
 
-    constructor(props){
-        super(props);
-        this.searchInput = React.createRef();
-    }
+    // constructor(props){
+    //     super(props);
+    //     this.searchInput = React.createRef();
+    // }
 
     retry = () => {
-        let searchItem = this.searchInput.current.value
+        let searchItem = this.props.query
         if (searchItem.length > 1){
             this.props.search_movie(searchItem)
         }else{
@@ -45,7 +45,7 @@ class MovieView extends Component{
 }
 
 function mapStateToProps(state) {
-    return { movies: state.movies, isLoading: state.isLoading, error: state.error }
+    return { movies: state.movies, isLoading: state.isLoading, query: state.query}
   }
 
 export default connect (
