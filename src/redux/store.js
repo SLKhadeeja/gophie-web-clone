@@ -1,4 +1,8 @@
-import { createStore } from '@reduxjs/toolkit';
+import { createStore, applyMiddleware } from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
 import getMovies from "./reducer.js";
 
-export default  createStore(getMovies)
+export default  createStore(
+    getMovies,
+    applyMiddleware(thunk)
+    );

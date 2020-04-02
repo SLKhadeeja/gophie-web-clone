@@ -7,26 +7,32 @@ import { search_movie, recommend} from "../redux/actions.js"
 
 class MovieView extends Component{
 
+    constructor(props){
+        super(props);
+        this.searchInput = React.createRef();
+    }
+
     retry = () => {
         let searchItem = this.searchInput.current.value
         if (searchItem.length > 1){
-            this.search_movie(searchItem)
+            this.props.search_movie(searchItem)
         }else{
-            this.recommend()
+            this.props.recommend()
         }
+        console.log(this.props.error)
     }
 
     render(){
         return(
             <div className="movies">
-                <MovieList movies={this.movies} />
+                <MovieList movies={this.props.movies} />
 
-                {this.isLoading && !this.error && (<Loading />)}
+                {this.props.isLoading && !this.props.error && (<Loading />)}
 
-                {this.error && (
+                {this.props.error && (
                     <div className="error">
                         <p className="error-message">Sorry man................Deven broke something</p>
-                        <button className="retry-btn" onClick={this.retry.bind(this)}>
+                        <button className="retry-btn" onClick={this.retry()}>
                             <RetryIcon />
                             Try Again
                         </button>

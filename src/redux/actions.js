@@ -1,11 +1,14 @@
-import { RECOMMEND, SEARCH_MOVIE,/*,DESCRIBE, DOWNLOAD*/
-RECOMMEND_COMPLETED,
-ERROR,
-SEARCH_MOVIE_COMPLETED} from "./actionTypes.js";
+import { RECOMMEND, 
+        SEARCH_MOVIE,/*,DESCRIBE, DOWNLOAD*/
+        RECOMMEND_COMPLETED,
+        ERROR,
+        SEARCH_MOVIE_COMPLETED
+    } from "./actionTypes.js";
 
 import axios from "axios";
 
 const api =  "https://gophie.herokuapp.com/";
+
 export const recommend = listIndex => {
     return (dispatch) => {
         dispatch({

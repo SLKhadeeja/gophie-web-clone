@@ -5,7 +5,7 @@ import "../css/App.css";
 import { search_movie, recommend} from "../redux/actions.js";
 
 function mapStateToProps(state) {
-    return { movies: state.movies, listIndex: state.listIndex, error: state.error }
+    return { movies: state.movies, listIndex: state.listIndex, error: state.error, more: state.more}
   }
 
 class Header extends Component{
@@ -20,13 +20,12 @@ class Header extends Component{
 
         if (searchItem.length === 0){
             this.props.recommend(false);
-            // this.setState({listIndex: 1});
-            this.listIndex = 1;
+            this.props.listIndex = 1;
+            console.log(this.props.listIndex)
             return;
         }
 
         if (matches.length >=1){
-            // this.setState({movies: matches});
             this.movies = matches;
             return;
         }
@@ -34,12 +33,11 @@ class Header extends Component{
     }
 
     search = () => {
-        // this.setState({
-        //     movies: [],
-        //     error: false
-        // })
         this.movies = [];
         this.error = false;
+        // console.log(this.props.error)
+        // console.log(this.props.more)
+
         let searchItem = this.searchInput.current.value;
         this.props.search_movie(searchItem)
     }
