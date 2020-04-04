@@ -11,6 +11,7 @@ class MovieView extends Component{
     //     super(props);
     //     this.searchInput = React.createRef();
     // }
+    
 
     retry = () => {
         let searchItem = this.props.query

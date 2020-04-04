@@ -1,13 +1,14 @@
 import React, {Component} from "react";
 import {DownloadIcon} from "./icons";
-import {connect} from "react-redux"
+import {connect} from "react-redux";
+import "../css/movie.css";
 
 class Movie extends Component {
     render(){
         const{CoverPhotoLink, DownloadLink, size, Title} = this.props.data;
         return(
             <div className="movie">
-                <div className="cover">
+                <div className="cover-image">
                     <img src={CoverPhotoLink} alt="" />
                     <a className="dButton" href={DownloadLink}>
                         <DownloadIcon />

@@ -11,6 +11,10 @@ body {
 }
 .App-header{
   display: block;
+  position: fixed;
+  height: 120px;
+  top: 70px;
+  box-shadow: #b14b44;
 }
 
 .search-bar {
@@ -18,11 +22,12 @@ body {
   display: inline-flex;
   justify-content: space-between;
   width: 100%;
-  height: 70px;
+  height: 60px;
   color: white;
   position: fixed;
   top: 0px;
-  box-shadow: #42ac04 0px -2px 8px 1px;
+  box-shadow: #b14b44 0px -2px 8px 1px;
+  padding-bottom: 0px;
 
 }
 
@@ -40,7 +45,7 @@ body {
 }
 
 .name{
-  background: #42ac04;
+  background: #b14b44;
   font-weight: bolder;
   font-size: 18px;
   display: inline-flex;
@@ -54,17 +59,18 @@ P.go:first-letter {
 
 .search-button{
   width: 20%;
-  background-color: #42ac04;
+  background-color: #b14b44;
   border-radius: 0px 5px 5px 0px;
+  border-color: #b14b44
 }
 
 .search{
   width: 100%;
   height: 90%;
-  color: #42ac04;
-  border-color: #42ac04;
-  border-top: 2px solid #42ac04;
-  border-bottom: 2px solid #42ac04;
+  color: #b14b44;
+  border-color: #b14b44;
+  border-top: 2px solid #b14b44;
+  border-bottom: 2px solid #b14b44;
   font-size: 20px;
   background: transparent;
 }
@@ -72,38 +78,46 @@ P.go:first-letter {
 .button-main{
   width: 100%;
   height: 100;
-  background-color: #43ae04;
+  background-color: #b14b44;
   border: none;
   outline: none;
 }
 
 .button-main:hover{
-  background-color: #42ac04;
+  background-color: #b14b44;
 }
 
 .search::placeholder{
-  color: #42ac04;
+  color: #b14b44;
   text-align: center;
   font-size: 18px;
   opacity: 0.6;
 }
 
 .drop-down{
-  padding-top: 80px;
-  position: fixed;
+  /* padding-top: 80px; */
+  /* position: fixed; */
   height: 50px;
   
 }
 
 .drop-down-main{
-  background-color: #43ae04;
+  /* background-color: #b14b44; */
   height: 100%;
   width: 130px;
   border-radius: 10px;
   font-size: 14px;
+  border-color: #b14b44;
+  border-width: 5px;
 
 }
 
+div.movies {
+  margin: 100px 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
 
 .error{
   display: block;
@@ -116,7 +130,7 @@ P.go:first-letter {
 } 
 
 .retry-btn{
-  background-color: #42ac04;
+  background-color: #b14b44;
   color: #282c34;
   font-weight: bold;
   font-size: 20px;
@@ -126,4 +140,23 @@ P.go:first-letter {
   display: inline-flex;
   justify-content: center;
   border-radius: 18px;
+}
+
+.light-btn {
+  position: absolute;
+  top: 80%;
+  right: 10%;
+  height: 50px;
+  width: 50px;
+  text-decoration: none;
+  border-radius: 50%;
+  outline: none;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  cursor: pointer;
+  box-shadow: 0px 0px 7px -2px #121315;
+
 }

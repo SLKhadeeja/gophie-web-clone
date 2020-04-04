@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {SearchIcon} from "./icons.js";
+import {SearchIcon, /*LightBlub*/} from "./icons.js";
 import "../css/App.css";
 import { search_movie, recommend, select_engine} from "../redux/actions.js";
 
@@ -24,15 +24,29 @@ class Header extends Component{
         }
 
         if (matches.length >=1){
-            this.movies = matches;
+            this.props.search_movie(this.props.engine, searchItem)
             return;
         }
-        // this.props.search_movie(searchItem)
     }
 
     search = () => {
         let searchItem = this.searchInput.current.value;
-        this.props.search_movie(searchItem)
+        if(searchItem.length > 1){
+            this.props.search_movie(searchItem)
+        }
+        else{
+            this.props.recommend(this.props.engine, this.props.page)
+        }
+    }
+
+    handleEngineChange = (event) => {
+        let engine = event.target.value;
+        this.props.select_engine(engine);
+        this.props.recommend(this.props.engine, this.props.page);
+    }
+
+    componentDidMount(){
+        this.props.recommend(this.props.engine, this.props.page)
     }
 
     render(){
@@ -57,12 +71,14 @@ class Header extends Component{
                 </div>
 
                 <div className="drop-down">
-                <select className="drop-down-main">
-                    <option hidden onChange={e => {return this.props.select_engine(e)}}>(optional)Engine</option>
-                    <option value="netnaija">NetNaija</option>
-                    <option value="fzmovies">FzMovies</option>
-                    <option value="besthdmovies">BestHDMovies</option>
-                </select>
+                    <select className="drop-down-main" value={this.engine} onChange={this.handleEngineChange}>
+                        <option value="netnaija">NetNaija</option>
+                        <option value="fzmovies">FzMovies</option>
+                        <option value="besthdmovies">BestHDMovies</option>
+                    </select>
+                    {/* <button className='light-btn'>
+                        <LightBlub />
+                    </button> */}
                 </div>
 
             </div>

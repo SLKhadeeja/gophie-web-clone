@@ -15,7 +15,7 @@ export const recommend = (engine, page)  => {
         dispatch({
             type: RECOMMEND
         })
-        axios.get(api + "list?page=" + String.valueOf(page) + "&engine=" + engine)
+        axios.get(api + "list?page=" + page + "&engine=" + engine)
         .then(res => {
             dispatch({
                 type: RECOMMEND_COMPLETED,
@@ -32,12 +32,12 @@ export const recommend = (engine, page)  => {
     }
 };
 
-export const search_movie = (query) => {
+export const search_movie = (engine, query) => {
     return (dispatch) => {
         dispatch({
             type: SEARCH_MOVIE
         })
-        axios.get(api + "search?engine=netnaija&query=" + query.replace(' ', '+'))
+        axios.get(api + "search?engine=" + engine + "&query=" + query.replace(' ', '+'))
         .then(res => {
             dispatch({
                 type: SEARCH_MOVIE_COMPLETED,
