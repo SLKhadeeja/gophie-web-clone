@@ -5,16 +5,15 @@
 }
 
 body {
-  background-color: #1e2126; 
-  /* padding: 0px;
-  margin: 0px; */
+  background-color: #393a3d; 
 }
+
 .App-header{
   display: block;
   position: fixed;
   height: 120px;
-  top: 70px;
-  box-shadow: #b14b44;
+  top: 65px;
+  z-index: 500;
 }
 
 .search-bar {
@@ -47,15 +46,16 @@ body {
 .name{
   background: #b14b44;
   font-weight: bolder;
-  font-size: 18px;
+  font-size: 13px;
   display: inline-flex;
 }
 
 P.go:first-letter {
-  font-size: 55px;
+  font-size: 45px;
   font-family: 'Courier New', Courier, monospace;
 
 }
+
 
 .search-button{
   width: 20%;
@@ -94,22 +94,36 @@ P.go:first-letter {
   opacity: 0.6;
 }
 
+.lower-header{
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .drop-down{
-  /* padding-top: 80px; */
-  /* position: fixed; */
-  height: 50px;
-  
+  height: 35px;
+  width: 100%
 }
 
 .drop-down-main{
-  /* background-color: #b14b44; */
   height: 100%;
   width: 130px;
   border-radius: 10px;
   font-size: 14px;
   border-color: #b14b44;
-  border-width: 5px;
+  border-width: 2.5px;
+}
 
+.light-btn {
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  border-color: #b14b44;
+  cursor: pointer;
+  border-radius: 50%;
+  border-width: 3px;
+  float: right;
+  margin: 5px; 
 }
 
 div.movies {
@@ -140,23 +154,4 @@ div.movies {
   display: inline-flex;
   justify-content: center;
   border-radius: 18px;
-}
-
-.light-btn {
-  position: absolute;
-  top: 80%;
-  right: 10%;
-  height: 50px;
-  width: 50px;
-  text-decoration: none;
-  border-radius: 50%;
-  outline: none;
-  border: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0px;
-  cursor: pointer;
-  box-shadow: 0px 0px 7px -2px #121315;
-
 }

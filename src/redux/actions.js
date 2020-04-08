@@ -53,12 +53,12 @@ export const search_movie = (engine, query) => {
     }
 };
 
-export const select_engine = option => {
+export const select_engine = engine => {
     return{
         type: SELECT_ENGINE,
-        payload: option
-    };
-}
+        payload: engine
+    }
+};
 // export const describe = describe_object =>{
 //     return{
 //         type: DESCRIBE,

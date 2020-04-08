@@ -1,3 +1,7 @@
+.movies{
+  overflow-y: scroll;
+}
+
 div.movie {
     width: 220px;
     min-height: 30vh;

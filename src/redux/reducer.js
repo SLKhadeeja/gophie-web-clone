@@ -4,7 +4,7 @@ const initialState = {
     movies: [],
     isLoading: true,
     more: true,
-    listIndex: 1,
+    // listIndex: 1,
     error: false,
     query: "",
     engine: "netnaija",

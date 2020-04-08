@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {SearchIcon, /*LightBlub*/} from "./icons.js";
+import {SearchIcon, LightBulb} from "./icons.js";
 import "../css/App.css";
 import { search_movie, recommend, select_engine} from "../redux/actions.js";
 
@@ -43,6 +43,7 @@ class Header extends Component{
         let engine = event.target.value;
         this.props.select_engine(engine);
         this.props.recommend(this.props.engine, this.props.page);
+        console.log(engine);
     }
 
     componentDidMount(){
@@ -54,7 +55,6 @@ class Header extends Component{
             <div className="App-header">
                 <div className="search-bar">
                     <div className="name">
-                    <img className="logo" src="./Gopher.svg" alt=""/>
                     <p className="go">GOPHIE</p>
                     </div>
 
@@ -70,15 +70,20 @@ class Header extends Component{
                     </div>
                 </div>
 
-                <div className="drop-down">
-                    <select className="drop-down-main" value={this.engine} onChange={this.handleEngineChange}>
-                        <option value="netnaija">NetNaija</option>
-                        <option value="fzmovies">FzMovies</option>
-                        <option value="besthdmovies">BestHDMovies</option>
-                    </select>
-                    {/* <button className='light-btn'>
-                        <LightBlub />
-                    </button> */}
+                <div className="lower-header">
+                    <div className="drop-down">
+                        <select className="drop-down-main" value={this.props.engine} onChange={this.handleEngineChange}>
+                            <option value="netnaija">NetNaija</option>
+                            <option value="fzmovies">FzMovies</option>
+                            <option value="besthdmovies">BestHDMovies</option>
+                        </select>
+                    </div>
+
+                    <div className="light-theme">
+                        <button className='light-btn'>
+                            <LightBulb />
+                        </button>
+                    </div>
                 </div>
 
             </div>
